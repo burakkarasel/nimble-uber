@@ -1,4 +1,4 @@
-class BaseDatabase {
+class BaseService {
   constructor(model) {
     this.model = model;
   }
@@ -19,9 +19,13 @@ class BaseDatabase {
     return this.model.findOne({ [key]: value });
   };
 
+  findWithFilter = async (obj) => {
+    return this.model.find(obj);
+  };
+
   updateById = async (id, object) => {
     return this.model.findByIdAndUpdate(id, object);
   };
 }
 
-module.exports = BaseDatabase;
+module.exports = BaseService;

@@ -1,19 +1,18 @@
 const uuid = require("uuid");
 const mongoose = require("mongoose");
-const Driver = require("./driver");
 
 const BookingSchema = new mongoose.Schema({
   origin: String,
   destination: String,
-  driverId: {
+  driver: {
     type: mongoose.Types.ObjectId,
     ref: "Driver",
-    autopopulate: true,
+    autopopulate: { maxDepth: 1 },
   },
-  passengerId: {
+  passenger: {
     type: mongoose.Types.ObjectId,
     ref: "Passenger",
-    autopopulate: true,
+    autopopulate: { maxDepth: 1 },
   },
 });
 
